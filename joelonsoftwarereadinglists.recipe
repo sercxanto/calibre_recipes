@@ -1,0 +1,245 @@
+##
+## Title:        http://www.joelonsoftware.com/ - Reading lists
+## Contact:      Georg Lutz <georg@georglutz.de>
+##
+## License:      GNU General Public License v3 - http://www.gnu.org/copyleft/gpl.html
+## Copyright:    Georg Lutz <georg@georglutz.de>
+##
+## Written:      May 2012
+## Last Edited:  2012-05-08
+##
+
+__license__     = 'GNU General Public License v3 - http://www.gnu.org/copyleft/gpl.html'
+__copyright__   = 'Georg Lutz <georg@georglutz.de>'
+
+
+'''
+http://www.joelonsoftware.com/ - Reading lists
+'''
+from calibre.web.feeds.news import BasicNewsRecipe
+
+class JoelOnSoftwareReadingLists(BasicNewsRecipe):
+    title          = u'Joel on Software - Reading lists'
+    oldest_article = 20*365 # in days, fetch _all_ articles, independend of age (default is 7)
+    no_stylesheets = True
+    
+    def createArticles(self, feedname, articleList):
+        l = (feedname, [])
+
+        for entry in articleList:
+            l[1].append( {
+                            "title": entry[1],
+                            "url" : "http://www.joelonsoftware.com" + entry[0]
+                         } )
+        return l
+
+
+    def parse_index(self):
+        readingLists = []
+
+
+        readingLists.append(self.createArticles("Top10", 
+            [\
+            ("/articles/fog0000000069.html", "Things You Should Never Do, Part I"),
+            ("/articles/fog0000000056.html", "Strategy Letter I: Ben and Jerry's vs. Amazon"),
+            ("/articles/fog0000000043.html", "The Joel Test: 12 Steps to Better Code"), 
+            ("/articles/fog0000000339.html", "Fire And Motion"),
+            ("/articles/fog0000000356.html", "The Iceberg Secret"),
+            ("/articles/LeakyAbstractions.html", "The Law of Leaky Abstractions"),
+            ("/articles/Unicode.html", "The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"),
+            ("/articles/APIWar.html", "How Microsoft Lost the API War"),
+            ("/articles/ThePerilsofJavaSchools.html", "The Perils of JavaSchools"),
+            ("/articles/DevelopmentAbstraction.html", "The Development Abstraction Layer")
+            ] ) )
+
+
+        readingLists.append(self.createArticles("New developer",
+            [\
+            ("/articles/fog0000000071.html", "NDAs and Contracts That You Should Never Sign"),
+            ("/articles/fog0000000332.html", "Getting Things Done When You're Only a Grunt"),
+            ("/articles/Unicode.html", "The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"),
+           ("/articles/ResumeRead.html", "Getting Your Resume Read"),
+           ("/articles/CoderToDeveloper.html", "Mike Gunderloy's Coder to Developer"),
+           ("/articles/CollegeAdvice.html", "Advice for Computer Science College Students"),
+           ("/articles/ThePerilsofJavaSchools.html", "The Perils of JavaSchools"),
+           ("/items/2007/12/03.html", "Talk at Yale: Part 1 of 3"),
+           ("/items/2007/12/04.html", "Talk at Yale: Part 2 of 3"),
+           ("/items/2007/12/05.html", "Talk at Yale: Part 3 of 3"),
+           ("/items/2008/11/26.html", "Exploding Offer Season"),
+           ("/items/2009/09/23.html", "The Duct Tape Programmer")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("Rock star developer",
+           [\
+           ("/articles/fog0000000043.html", "The Joel Test: 12 Steps to Better Code"),
+           ("/articles/fog0000000029.html", "Painless Bug Tracking"),
+           ("/articles/fog0000000023.html", "Daily Builds Are Your Friend"),
+           ("/articles/fog0000000018.html", "Don't Let Architecture Astronauts Scare You"),
+           ("/articles/fog0000000014.html", "Hard-assed Bug Fixin'"),
+           ("/articles/fog0000000306.html", "A Hard Drill Makes an Easy Battle"),
+           ("/articles/fog0000000319.html", "Back to Basics"),
+           ("/articles/FiveWorlds.html", "Five Worlds"),
+           ("/articles/LeakyAbstractions.html", "The Law of Leaky Abstractions"),
+           ("/articles/Craftsmanship.html", "Craftsmanship"),
+           ("/articles/Biculturalism.html", "Biculturalism"),
+           ("/articles/ForewordtoPPM.html", "Foreword to Painless Project Management with FogBugz, by Mike Gunderloy"),
+           ("/articles/Wrong.html", "Making Wrong Code Look Wrong"),
+           ("/items/2006/08/01.html", "Can Your Programming Language Do This?"),
+           ("/items/2008/02/19.html", "Why are the Microsoft Office file formats so complicated? (And some workarounds)"),
+           ("/items/2010/03/17.html", "Distributed Version Control is here to stay, baby")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("Tech lead",
+           [\
+           ("/articles/TwoStories.html", "Two Stories"),
+           ("/articles/fog0000000022.html", "Human Task Switches Considered Harmful"),
+           ("/articles/LordPalmerston.html", "Lord Palmerston on Programming"),
+           ("/articles/DevelopmentAbstraction.html", "The Development Abstraction Layer"),
+           ("/items/2006/08/07.html", "Three Management Methods (Introduction)"),
+           ("/items/2006/08/08.html", "The Command and Control Management Method"),
+           ("/items/2006/08/09.html", "The Econ 101 Management Method"),
+           ("/items/2006/08/10.html", "The Identity Management Method"),
+           ("/items/2007/10/26.html", "Evidence Based Scheduling")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("CEO",
+           [\
+           ("/articles/fog0000000070.html", "Incentive Pay Considered Harmful"),
+           ("/articles/fog0000000069.html", "Things You Should Never Do, Part I"),
+           ("/articles/fog0000000068.html", "Where do These People Get Their (Unoriginal) Ideas?"),
+           ("/articles/fog0000000067.html", "Top Five (Wrong) Reasons You Don't Have Testers"),
+           ("/articles/fog0000000056.html", "Strategy Letter I: Ben and Jerry's vs. Amazon"),
+           ("/articles/fog0000000054.html", "Strategy Letter II: Chicken and Egg Problems"),
+           ("/articles/fog0000000052.html", "Strategy Letter III: Let Me Go Back!"),
+           ("/articles/fog0000000037.html", "Wasting Money on Cats"),
+           ("/articles/fog0000000024.html", "Big Macs vs. The Naked Chef"),
+           ("/articles/fog0000000020.html", "Strategy Letter IV: Bloatware and the 80/20 Myth"),
+           ("/articles/fog0000000017.html", "Good Software Takes Ten Years. Get Used To it."),
+           ("/articles/fog0000000007.html", "In Defense of Not-Invented-Here Syndrome"),
+           ("/articles/fog0000000339.html", "Fire And Motion"),
+           ("/articles/StrategyLetterV.html", "Strategy Letter V"),
+           ("/articles/Platforms.html", "Platforms"),
+           ("/articles/Stupidity.html", "Rick Chapman is In Search of Stupidity"),
+           ("/articles/APIWar.html", "How Microsoft Lost the API War"),
+           ("/articles/customerservice.html", "Seven steps to remarkable customer service"),
+           ("/items/2007/09/18.html", "Strategy Letter VI"),
+           ("/items/2008/03/17.html", "Martian Headsets"),
+           ("/items/2009/11/01.html", "Figuring out what your company is all about"),
+           ("/items/2010/01/26.html", "Why testers?")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("Startup founder",
+           [\
+           ("/articles/VC.html", "Fixing Venture Capital"),
+           ("/articles/Micro-ISV.html", "Micro-ISV: From Vision to Reality"),
+           ("/articles/BusinessofSoftware.html", "Foreword to \"Eric Sink on the Business of Software\""),
+           ("/items/2006/06/16.html", "My First BillG Review"),
+           ("/items/2008/05/01.html", "Architecture astronauts take over"),
+           ("/items/2009/06/23.html", "The eternal optimism of the Clear mind")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("Program manager",
+           [\
+           ("/articles/PickingShipDate.html", "Picking a Ship Date"),
+           ("/articles/BetaTest.html", "Top Twelve Tips for Running a Beta Test"),
+           ("/articles/UsabilityTestingwithMorae.html", "Usability Testing with Morae"),
+           ("/articles/SetYourPriorities.html", "Set Your Priorities"),
+           ("/items/2009/03/09.html", "How to be a program manager")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("Software designer",
+           [\
+           ("/uibook/chapters/fog0000000057.html", "Controlling Your Environment Makes You Happy"),
+           ("/uibook/chapters/fog0000000058.html", "Figuring Out What They Expected"),
+           ("/uibook/chapters/fog0000000059.html", "Choices"),
+           ("/uibook/chapters/fog0000000060.html", "Affordances and Metaphors"),
+           ("/uibook/chapters/fog0000000061.html", "Consistency and Other Hobgoblins"),
+           ("/uibook/chapters/fog0000000062.html", "Designing for People Who Have Better Things To Do With Their Lives"),
+           ("/uibook/chapters/fog0000000063.html", "Designing for People Who Have Better Things To Do With Their Lives, Part Two"),
+           ("/uibook/chapters/fog0000000064.html", "Designing for People Who Have Better Things To Do With Their Lives, Part Three"),
+           ("/uibook/chapters/fog0000000065.html", "The Process of Designing a Product"),
+           ("/articles/fog0000000036.html", "Painless Functional Specifications - Part 1: Why Bother?"),
+           ("/articles/fog0000000035.html", "Painless Functional Specifications - Part 2: What's a Spec?"),
+           ("/articles/fog0000000034.html", "Painless Functional Specifications - Part 3: But... How?"),
+           ("/articles/fog0000000033.html", "Painless Functional Specifications - Part 4: Tips"),
+           ("/news/fog0000000322.html", "Humane Programming"),
+           ("/articles/fog0000000356.html", "The Iceberg Secret, Revealed"),
+           ("/articles/NothingIsSimple.html", "Nothing is as Simple as it Seems"),
+           ("/articles/BuildingCommunitieswithSo.html", "Building Communities with Software"),
+           ("/articles/NotJustUsability.html", "It's Not Just Usability"),
+           ("/articles/AardvarkSpec.html", "The Project Aardvark Spec"),
+           ("/design/2ndDraft/00.html", "Introduction to Great Design (Second Draft, In Progress)"),
+           ("/design/2ndDraft/01.html", "Great Design: What is Design? (First Draft)"),
+           ("/design/2ndDraft/02.html", "What Makes It Great? (First Draft)"),
+           ("/items/2006/09/19b.html", "Amazing X-Ray Glasses from Sprint!"),
+           ("/items/2006/11/21.html", "Choices = Headaches"),
+           ("/items/2006/12/09.html", "Simplicity"),
+           ("/items/2006/12/15.html", "Elegance"),
+           ("/items/2007/01/21.html", "The Big Picture"),
+           ("/items/2007/06/12.html", "Font smoothing, anti-aliasing, and sub-pixel rendering")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("Product manager",
+           [\
+           ("/articles/fog0000000019.html", "How Many Lies Can You Find In One Direct Mail Piece?"),
+           ("/articles/MouthWideShut.html", "Mouth Wide Shut"),
+           ("/articles/CamelsandRubberDuckies.html", "Camels and Rubber Duckies"),
+           ("/items/2007/11/16.html", "How to demo software"),
+           ("/items/2007/12/06.html", "Where there's muck, there's brass")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("Recruiter",
+           [\
+           ("/articles/fog0000000050.html", "Whaddaya Mean, You Can't Find Programmers?"),
+           ("/articles/HighNotes.html", "Hitting the High Notes"),
+           ("/articles/FindingGreatDevelopers.html", "Finding Great Developers"),
+           ("/articles/FieldGuidetoDevelopers.html", "A Field Guide to Developers"),
+           ("/articles/SortingResumes.html", "Sorting Resumes"),
+           ("/articles/ThePhoneScreen.html", "The Phone Screen"),
+           ("/articles/GuerrillaInterviewing3.html", "The Guerrilla Guide to Interviewing (version 3.0)"),
+           ("/items/2009/12/02.html", "Programmer search engine")
+           ] ) )
+
+
+        readingLists.append(self.createArticles("FogCreek",
+           [\
+           ("/articles/fog0000000076.html", "More on Sabbaticals..."),
+           ("/articles/fog0000000072.html", "Command and Conquer and the Herd of Coconuts"),
+           ("/articles/fog0000000021.html", "Spring in Cambridge"),
+           ("/articles/fog0000000012.html", "What is the Work of Dogs in this Country?"),
+           ("/articles/fog0000000009.html", "Working on CityDesk, Part One"),
+           ("/articles/fog0000000008.html", "Working on CityDesk, Part Two"),
+           ("/articles/fog0000000006.html", "Working on CityDesk, Part Three"),
+           ("/articles/fog0000000250.html", "Working on CityDesk, Part Four"),
+           ("/articles/fog0000000296.html", "Working on CityDesk, Part Five"),
+           ("/articles/fog0000000348.html", "Rub a dub dub"),
+           ("/articles/Peer1.html", "New Server at Peer 1 Network"),
+           ("/articles/OfficeNewYork.html", "Finding an Office in New York City"),
+           ("/articles/BionicOffice.html", "Bionic Office"),
+           ("/articles/ColoExpansionPart1.html", "Colo Expansion Version 2.0"),
+           ("/articles/FogBugzI.html", "The Road to FogBugz 4.0: Part I"),
+           ("/articles/FogBugzII.html", "The Road to FogBugz 4.0: Part II"),
+           ("/articles/FogBugzIII.html", "The Road to FogBugz 4.0: Part III"),
+           ("/articles/FogBugzIV.html", "The Road to FogBugz 4.0: Part IV"),
+           ("/articles/FogBugzV.html", "The Road to FogBugz 4.0: Part V"),
+           ("/articles/AardvarkMidtermReport.html", "Project Aardvark Midterm Report"),
+           ("/articles/HowToShipAnything.html", "How to Ship Anything"),
+           ("/articles/FB4.5.html", "FogBugz 4½ and Subjective Well-Being"),
+           ("/items/2007/01/26.html", "Copilot 2.0 ships!"),
+           ("/items/2007/06/07.html", "A game of inches"),
+           ("/items/2008/01/22.html", "Five whys"),
+           ("/items/2008/12/29.html", "The new Fog Creek office"),
+           ("/items/2009/02/05.html", "New, faster Copilot"),
+           ("/items/2009/07/20.html", "Fruity treats, customization, and supersonics: FogBugz 7 is here")
+           ] ) )
+
+        return readingLists
+
